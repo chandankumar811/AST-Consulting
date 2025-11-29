@@ -14,7 +14,7 @@ export const newsCategories: string[] = [
 
 
 export async function fetchNewsAPI() {
-  const API_KEY = process.env.NEWSAPI_KEY;
+
 
   const res = await axios.get(
     `https://newsapi.org/v2/everything?q=india&language=en&apiKey=${process.env.API_KEY}`

@@ -9,7 +9,6 @@ export interface NewsItem {
   content?: string;
 }
 
-
 export interface HeaderProps {
   toggleMenu: () => void;
 }
