@@ -46,7 +46,7 @@ project/
 │       └── [id].tsx
 │
 ├── data/
-│   └── mockData.ts
+│   └── newsFromApi.ts
 │
 ├── types/
 │   └── index.ts
