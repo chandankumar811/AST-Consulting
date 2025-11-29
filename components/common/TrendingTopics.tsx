@@ -20,7 +20,7 @@ const TrendingTopics: React.FC<TrendingTopicsProps> = ({ topics }) => {
 
   return (
     <div className="bg-white py-4 border-b">
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-4">
         <div className="flex items-center">
           <button 
             onClick={() => scroll('left')}
@@ -36,7 +36,7 @@ const TrendingTopics: React.FC<TrendingTopicsProps> = ({ topics }) => {
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="flex space-x-3">
-              {topics.map((topic: string, index: number) => (
+              {topics.map((topic, index) => (
                 <button
                   key={index}
                   className="px-4 py-2 bg-gray-100 hover:bg-red-100 text-sm rounded-full whitespace-nowrap transition-colors"

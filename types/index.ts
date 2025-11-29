@@ -9,6 +9,7 @@ export interface NewsItem {
   content?: string;
 }
 
+
 export interface HeaderProps {
   toggleMenu: () => void;
 }
@@ -16,6 +17,7 @@ export interface HeaderProps {
 export interface NavigationProps {
   isOpen: boolean;
   closeMenu: () => void;
+  categories?: string[];
 }
 
 export interface NewsCardProps {

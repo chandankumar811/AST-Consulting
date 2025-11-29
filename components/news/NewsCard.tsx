@@ -14,7 +14,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news, featured = false }) => {
           <img
             src={news.image}
             alt={news.title}
-            className="w-full h-48 object-cover"
+            className="w-full h-fit object-cover"
           />
         </div>
         
@@ -23,7 +23,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news, featured = false }) => {
             {news.category}
           </span>
           
-          <h3 className={`font-bold text-gray-900 mb-2 hover:text-red-600 transition-colors ${
+          <h3 className={`font-bold text-gray-900 mb-2 hover:text-red-600 transition-colors line-clamp-3 ${
             featured ? 'text-2xl' : 'text-lg'
           }`}>
             {news.title}

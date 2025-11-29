@@ -1,15 +1,20 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 import { NavigationProps } from '@/types';
-import { newsCategories } from '@/data/mockData';
+import { newsCategories } from '@/data/newsFromAPI';
 
-const Navigation: React.FC<NavigationProps> = ({ isOpen, closeMenu }) => {
+const Navigation: React.FC<NavigationProps> = ({ isOpen, closeMenu, categories = newsCategories }) => {
+  const router = useRouter();
+  const currentPath = router.pathname; 
+  const currentSlug = router.asPath.replace("/", ""); 
+
   return (
     <>
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
           onClick={closeMenu}
         />
       )}
@@ -29,20 +34,32 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, closeMenu }) => {
 
         <div className="lg:container lg:mx-auto lg:px-4">
           <ul className="flex flex-col lg:flex-row lg:space-x-1 overflow-x-auto py-3">
-            {newsCategories.map((category: string, index: number) => (
-              <li key={index}>
-                <Link
-                  href={index === 0 ? '/' : `/${category.toLowerCase().replace(' ', '-')}`}
-                  className={`
-                    block px-4 py-3 lg:py-2 text-sm font-medium
-                    hover:bg-red-50 hover:text-red-600 transition-colors
-                    ${index === 0 ? 'text-red-600 border-b-2 lg:border-b-2 border-red-600' : 'text-gray-700'}
-                  `}
-                >
-                  {category}
-                </Link>
-              </li>
-            ))}
+            {newsCategories.map((category: string, index: number) => {
+              
+              const slug = category.toLowerCase().replace(" ", "-");
+              const isActive = 
+                (index === 0 && currentPath === "/") || 
+                currentSlug === slug;
+
+              return (
+                <li key={index}>
+                  <Link
+                    href={index === 0 ? '/' : `/${slug}`}
+                    onClick={closeMenu}
+                    className={`
+                      block px-4 py-3 lg:py-2 text-sm font-medium transition-colors
+                      ${
+                        isActive 
+                          ? "text-red-600 border-b-2 border-red-600" 
+                          : "text-gray-700 hover:bg-red-50 hover:text-red-600"
+                      }
+                    `}
+                  >
+                    {category}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </nav>

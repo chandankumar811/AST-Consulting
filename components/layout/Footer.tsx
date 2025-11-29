@@ -1,7 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  className?: string;
+}
+
+const Footer: React.FC<FooterProps> = ({className =""}) => {
   return (
     <footer className="bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4">

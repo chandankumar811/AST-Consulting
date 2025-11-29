@@ -7,7 +7,7 @@ const Header: React.FC<HeaderProps> = ({ toggleMenu }) => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-4">
         <div className="flex items-center justify-between py-3">
           <button onClick={toggleMenu} className="lg:hidden">
             <Menu className="w-6 h-6" />
